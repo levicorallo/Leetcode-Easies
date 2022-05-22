@@ -4,17 +4,14 @@
 
 
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
-        lcp = "" #set variable empty 
-        if strs is None or len(strs) == 0: #condition to return empty 
-            return lcp
-        minimumLength = len(strs[0]) #finding smallest word in the array
-        for i in range(1, len(strs)):  #ok here setting loop: for i in i to length of strs 
-            minimumLength = min(minimumLength, len(strs[i])) #loop until the minimum length
-            for i in range(0, minimumLength): #Get the current character from the first (0th) string
-                current = strs[0][i] #Check if this character is found in all other strings or not
-                for j in range(0, len(strs)):     #iterations 
-                    if strs[j][i] != current:     #update to current if biggest
-                        return lcp
-                lcp += current
-            return lcp
+	def longestCommonPrefix(self, lst: List[str]) -> str:
+		ans = ""
+		for i in zip(*lst):
+			p = "".join(i)
+			if len(set(p)) != 1:
+				return (ans)
+
+			else:
+				ans += p[0]
+
+		return (ans)
